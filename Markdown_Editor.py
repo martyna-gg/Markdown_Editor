@@ -24,16 +24,12 @@ def italic():
 
 def header():
     global text
-    level = int(input('Level: >'))
-    try:
-        while level not in range(1,7):
-            print('The level should be within the range of 1 to 6')
-            level = int(input('Level: >'))
-    except ValueError:
-            print('The level should be within the range of 1 to 6')
-            level = int(input('Level: >'))
+    level = input('Level: >')
+    while not level.isnumeric() or (level.isnumeric() and int(level) not in range(1,7)):
+        print('The level should be within the range of 1 to 6')
+        level = input('Level: >')
 
-    text += '\n' + '#' * level + ' ' + input('Text: >') + '\n'
+    text += '\n' + '#' * int(level) + ' ' + input('Text: >') + '\n'
     print(text)
 
 def link():
@@ -56,13 +52,9 @@ def new_line():
 def list(type_of_list):
     global text
     rows = input('Number of rows: >')
-    try:
-        while int(rows) < 1:
-            print('The number of rows should be greater than zero')
-            rows = input('Number of rows: >')
-    except ValueError:
-            print('The number of rows should be greater than zero')
-            rows = input('Number of rows: >')
+    while not rows.isnumeric() or (rows.isnumeric() and int(rows) < 1):
+        print('The number of rows should be greater than zero')
+        rows = input('Number of rows: >')
 
     text += '\n'
 
